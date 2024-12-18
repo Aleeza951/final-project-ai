@@ -3,9 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+
+        <header class="smartchat">
+            <h1>Smart Chat</h1>
+            <div class="blue"></div> <!-- Corrected to use div -->
+            <h2>Meet Fin, the AI Agent</h2>
+            <p>The AI agent capable of handling your entire frontline support.</p>
+            <button onclick="startChat()">Start Free Trial</button>
+            <button onclick="viewDemo()">View Demo</button>
+        </header>
     
+              <!-- Features Section -->
+              <section class="features">
+                <h2>Why Choose Fin?</h2>
+                <div class="feature-item">
+                    <h3>8.2 Million Resolutions</h3>
+                    <p>Fin has resolved millions of queries since March 2023.</p>
+                    <button onclick="showDetails('resolution-details')">View Details</button>
+                    <div id="resolution-details" class="hidden">
+                        <p>Fin's AI-powered resolutions have been incredibly effective, reducing the need for manual intervention by customer support teams.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <h3>51% Avg. Resolution Rate</h3>
+                    <p>Unmatched performance for Intercom customers.</p>
+                    <button onclick="showDetails('resolution-rate-details')">View Details</button>
+                    <div id="resolution-rate-details" class="hidden">
+                        <p>With a 51% resolution rate, Fin handles customer issues with high efficiency, ensuring faster response times and fewer escalations.</p>
+                    </div>
+                </div>
+            </section>
+            
+
+    <!-- Chatbot Section -->
+    <section id="chatbot">
+        <div class="chat-container">
+            <div id="chat-box">
+                <!-- Chat messages will appear here -->
+            </div>
+            <input type="text" id="user-input" placeholder="Type a message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </section>
+    
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Fin AI Agent. <a href="#">Terms</a> | <a href="#">Privacy</a> | <a href="#">Security</a></p>
+    </footer>
+
+    <script src="mein.js"></script>
 </body>
 </html>
