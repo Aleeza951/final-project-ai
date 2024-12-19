@@ -1,43 +1,61 @@
-// Show/Hide additional details when the button is clicked
-function showDetails(detailsId) {
-    var details = document.getElementById(detailsId);
-    if (details.style.display === "none" || details.style.display === "") {
-        details.style.display = "block";  // Show the details
+// mein.js
+
+// Function to start a chat trial
+function startChat() {
+    alert("Welcome to the Smart Chat Free Trial!");
+}
+
+// Function to view demo
+function viewDemo() {
+    alert("Viewing demo...");
+}
+
+// Function to toggle the visibility of detail sections
+function showDetails(detailId) {
+    const detailElement = document.getElementById(detailId);
+    if (detailElement.classList.contains("hidden")) {
+        detailElement.classList.remove("hidden");
     } else {
-        details.style.display = "none";  // Hide the details
+        detailElement.classList.add("hidden");
     }
 }
 
-
+// Function to send a message in the chatbot
 function sendMessage() {
-    const userMessage = document.getElementById('user-input').value;
-    const chatBox = document.getElementById('chat-box');
+    const userInput = document.getElementById("user-input");
+    const chatBox = document.getElementById("chat-box");
+    const userMessage = userInput.value.trim();
 
-    if (userMessage.trim() === "") return;  // Don't send empty messages
+    if (userMessage) {
+        // Add user's message to chat
+        const userMessageElement = document.createElement("div");
+        userMessageElement.className = "user-message";
+        userMessageElement.textContent = userMessage;
+        chatBox.appendChild(userMessageElement);
 
-    // Create a user message element
-    const userMessageElement = document.createElement('div');
-    userMessageElement.textContent = "You: " + userMessage;
-    userMessageElement.style.padding = "8px";
-    userMessageElement.style.backgroundColor = "#e0f7fa";
-    userMessageElement.style.borderRadius = "5px";
-    userMessageElement.style.marginBottom = "10px";
-    chatBox.appendChild(userMessageElement);
+        // Clear input
+        userInput.value = "";
 
-    // Simulate a bot response after a brief delay
-    setTimeout(() => {
-        const botResponseElement = document.createElement('div');
-        botResponseElement.textContent = "Fin: Hello! I am here to help you.";
-        botResponseElement.style.padding = "8px";
-        botResponseElement.style.backgroundColor = "#f1f1f1";
-        botResponseElement.style.borderRadius = "5px";
-        botResponseElement.style.marginBottom = "10px";
-        chatBox.appendChild(botResponseElement);
+        // Simulate AI response
+        const aiResponse = generateAIResponse(userMessage);
+        const aiMessageElement = document.createElement("div");
+        aiMessageElement.className = "ai-message";
+        aiMessageElement.textContent = aiResponse;
+        chatBox.appendChild(aiMessageElement);
 
-        // Scroll the chat to the bottom
+        // Scroll to bottom
         chatBox.scrollTop = chatBox.scrollHeight;
-    }, 1000);
-
-    // Clear the input field
-    document.getElementById('user-input').value = '';
+    }
 }
+
+// Function to generate AI response
+function generateAIResponse(userMessage) {
+    // Simple responses based on user's input
+    const responses = {
+        "hello": "Hi! How can I help you today?",
+        "help": "Sure! What do you need help with?",
+        "bye": "Goodbye! Have a great day!",
+    };
+    return responses[userMessage.toLowerCase()] || "I'm not sure I understand. Can you rephrase?";
+}
+
